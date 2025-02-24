@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article>
+    <h1><a href="{{ .Params.soruce_url }}" target="_blank">{{ .Title }}</a></h1>
+    <p><strong>Saved on:</strong> {{ .Date.Format "January 2, 2006" }}</p>
+
+    {{ if .Params.tags }}
+        <p><strong>Tags:</strong>
+        {{ range .Params.tags }}
+            <a href="{{ "tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+        {{ end }}
+        </p>
+    {{ end }}
+
+    {{ if .Params.summary }}
+        <p><strong>Summary:</strong> {{ .Params.summary }}</p>
+    {{ end }}
+
+    <div>
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

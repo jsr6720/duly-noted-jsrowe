@@ -1,0 +1,146 @@
+# hugo. why do you have to invent something new called TOML when YAML already exists.
+# at least thanks for supporting both.
+
+url: "https://noted.jsrowe.com"
+baseURL: "/"
+languageCode: "en-us"
+title: "Duly Noted"
+theme: "mainroad"
+
+pagination:
+  pagerSize: 10
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  taxonomy:
+    - HTML
+    - RSS 
+
+sitemap:
+  changefreq: "weekly"
+  priority: 0.5
+  filename: "sitemap.xml"
+
+taxonomies:
+  tag: "tags"  # Enables tagging system for better article organization
+  category: categories
+  primary_source: primary_sources    # Where you found/read it
+  original_source: original_sources  # The actual source material
+
+markup:
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    style: "github"
+  goldmark:
+    renderer:
+      unsafe: true  # Allows raw HTML inside Markdown
+
+# Theme-specific parameters
+params:
+  customCSS: ["css/custom.css"]
+  menuTitle: "Menu"  # Optional custom menu title
+  style:
+    menuNavigation: true  # Enable menu navigation
+    menuNavigationTitle: "Menu"  # Optional custom menu navigation title
+    menuNavigationIcon: "fa-bars"  # Optional custom menu navigation icon
+  # Author information
+  author:
+    name: "James Rowe"
+    bio: "I write stuff."
+  # avatar: "img/avatar.png"  # put this image in static/img/
+  description: "A Commonplace Book of Encountered Ideas."
+  copyright: "© 2021 James Rowe"
+  favicon: "favicon.ico"  # put this image in static/img/
+  twitter-cards: true
+  pager: true
+  post_meta: ["author", "date", "categories", "translations"] # Order of post meta information
+  # customCSS = ["css/custom.css"] # Include custom CSS files
+  # customJS = ["js/custom.js"] # Include custom JS files
+
+  # required for mainroad theme
+  logo:
+    image: 'images/notebook.png'
+    subtitle: "A Commonplace Book of Encountered Ideas"
+  
+  thumbnail:
+    visibility:
+      - "post"
+      - "list"
+
+  style:
+    vars:
+      highlightColor: "#E30613"
+
+  # Customize the main menu
+  mainSections:
+    - "posts"
+    - "noted"
+  
+  # I loosely keep track of where i'm getting my content from
+  sources:
+    news:
+      - wired
+      - nyt
+      - wsj
+      - ft
+    academic:
+      - arxiv
+      - whitepaper
+    blog:
+      - paulgraham
+    social:
+      - hackernews
+      - linkedin
+      - slashdot
+    other:
+      - stumbled     # For those random wonderful internet discoveries
+      - blog-post    # One-off blog posts
+      - shared-with-me  # Things friends send you
+  
+  widgets:
+    search:
+      cached: false
+    categories:
+      cached: true
+      counter: true
+    taglist:
+      cached: true
+      counter: true
+    social:
+      cached: true
+      # Enable social links widget
+      enable: true
+      # Optional: Set custom widget title
+      title: "Social"
+      # Configure your social links
+      # instagram: "hothubs"
+      linkedin: "jsr6720"
+      github: "jsr6720"
+      # youtube: "@OMT-Studios"
+      email: "jrowe6720@gmail.com"
+      twitter: "jrowe6720"
+      bluesky: "jsr6720"
+  
+  # Sidebar configuration
+  sidebar:
+    home: "right"
+    list: "right"
+    single: false
+    widgets:
+      - search    # Optional
+    #  - recent    # Show recent posts
+    #  - categories 
+      - taglist   # Show tags
+      - social    # Show social links
+
+# Menu items just spool posts
+menu:
+  main:
+    - identifier: "posts"
+      name: "Posts"
+      url: "/"
+      weight: 1
+      
