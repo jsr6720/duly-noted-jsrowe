@@ -1,15 +1,10 @@
 ---
-title: "Duly Noted(File)"
-description: "A Commonplace Book of Encountered Ideas(file)."
+title: "Duly Noted"
+description: "A Microblog of Encountered Ideas."
 ---
 
 Welcome to my **public knowledge archive**, where I document insights from articles, research, and ideas worth remembering.
 
-<a href="/index.xml" type="application/rss+xml" title="RSS Feed" href="{{ .Site.BaseURL }}index.xml">RSS Feed</a>
+[About *Duly Noted*](/about/) | <a href="/index.xml" type="application/rss+xml" title="RSS Feed">RSS Feed</a>
 
-`code message`
-
-```python
-def hello():
-    print("Hello, Hugo!")
-```
+You might also like [my longer pieces](https://jsrowe.com/)

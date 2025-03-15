@@ -1,5 +1,5 @@
-# noted-jsrowe
+# duly-noted-jsrowe
 
-Common Book/Personal Knowledge System (noted.jsrowe.com). As in "Duly noted."
+Micro Blog/Personal Knowledge System (noted.jsrowe.com). As in "Duly noted."
 
 

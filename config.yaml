@@ -51,7 +51,7 @@ params:
     name: "James Rowe"
     bio: "I write stuff."
   # avatar: "img/avatar.png"  # put this image in static/img/
-  description: "A Commonplace Book of Encountered Ideas."
+  description: "A Microblog of Encountered Ideas."
   copyright: "© 2021 James Rowe"
   favicon: "favicon.ico"  # put this image in static/img/
   twitter-cards: true
@@ -63,7 +63,7 @@ params:
   # required for mainroad theme
   logo:
     image: 'images/notebook.png'
-    subtitle: "A Commonplace Book of Encountered Ideas"
+    subtitle: "A Microblog of Encountered Ideas"
   
   thumbnail:
     visibility:
