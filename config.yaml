@@ -7,6 +7,9 @@ languageCode: "en-us"
 title: "Duly Noted"
 theme: "mainroad"
 
+permalinks:
+  noted: "/:slug/"
+
 pagination:
   pagerSize: 10
 
@@ -76,7 +79,6 @@ params:
 
   # Customize the main menu
   mainSections:
-    - "posts"
     - "noted"
   
   # I loosely keep track of where i'm getting my content from
@@ -139,8 +141,7 @@ params:
 # Menu items just spool posts
 menu:
   main:
-    - identifier: "posts"
-      name: "Posts"
+    - identifier: "noted"
+      name: "Duly Noted"
       url: "/"
       weight: 1
-      

@@ -8,7 +8,7 @@ menu:
   footer:
     weight: 10
 # Theme-Defined params
-lead: "A microblog of ideas worth remembering" 
+lead: "A microblog of encountered ideas worth remembering" 
 auto_generated: false
 ---
 ## About Duly Noted
