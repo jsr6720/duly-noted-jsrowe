@@ -1,6 +1,7 @@
 # hugo. why do you have to invent something new called TOML when YAML already exists.
 # at least thanks for supporting both.
 
+# GitHub Pages backup <https://jsr6720.github.io/duly-noted-jsrowe/>
 url: "https://noted.jsrowe.com"
 baseURL: "/"
 languageCode: "en-us"
