@@ -49,8 +49,8 @@ jobs:
           from datetime import datetime
           
           # S3 configuration
-          BUCKET_NAME = "${{ secrets.S3_BUCKET }}"
-          FOLDER_PATH = "${{ vars.S3_FOLDER_PATH }}"  # Should match the folder from your processor
+          BUCKET_NAME = "${{ secrets.S3_BUCKET_DULY_NOTED }}"
+          FOLDER_PATH = "${{ vars.S3_BUCKET_DULY_NOTED_PATH }}"  # Should match the folder from your processor
           
           # Setup S3 client
           s3 = boto3.client('s3')
