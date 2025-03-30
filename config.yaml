@@ -45,6 +45,7 @@ markup:
 # Theme-specific parameters
 params:
   customCSS: ["css/custom.css"]
+  dateFormat: "January 2, 2006 PM"  # Customize date format
   menuTitle: "Menu"  # Optional custom menu title
   style:
     menuNavigation: true  # Enable menu navigation
