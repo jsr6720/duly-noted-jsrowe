@@ -110,9 +110,9 @@ def main():
     # For each processed item, find and download microblog markdown
     for item_id in processed_items:
         print(f"Processing item {item_id}")
-        
+        item_id_guid = item_id.split('/')[-1]  # Extract the item ID from the path
         # Find microblog markdown
-        markdown_key = find_microblog_markdown(item_id.split('/')[-1])  # Extract the item ID from the path
+        markdown_key = find_microblog_markdown(item_id_guid)  # Extract the item ID from the path
         
         if markdown_key:
             # Download markdown
@@ -143,6 +143,7 @@ def main():
                         Key=markdown_key,
                         MetadataDirective='REPLACE',
                         Metadata={
+                            'item-id': item_id_guid,
                             'target': 'microblog',
                             'status': 'published'
                         }
