@@ -23,3 +23,7 @@ Thumbs.db
 # Hugo cache & temp data
 .cache/
 hugo_cache/
+
+
+# .github/workflows artifacts
+sync_microblogs.py
