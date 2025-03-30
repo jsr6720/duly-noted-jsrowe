@@ -153,7 +153,7 @@ jobs:
                   print(f"Processing item {item_id}")
                   
                   # Find microblog markdown
-                  markdown_key = find_microblog_markdown(item_id)
+                  markdown_key = find_microblog_markdown(item_id.split('/')[-1])  # Extract the item ID from the path
                   
                   if markdown_key:
                       # Download markdown
@@ -162,7 +162,21 @@ jobs:
                       if destination:
                           new_files.append(destination)
                           
-                          # Mark as synced in S3 metadata
+                          # Mark as synced in S3 metadata for both markdown and original JSON
+                          try:
+                              # Mark the original JSON as synced
+                              s3.copy_object(
+                                  Bucket=BUCKET_NAME,
+                                  CopySource={'Bucket': BUCKET_NAME, 'Key': item_id + '.json'},
+                                  Key=item_id + '.json',
+                                  MetadataDirective='REPLACE',
+                                  Metadata={
+                                      'status': 'synced'
+                                  }
+                              )
+                              print(f"Marked {item_id}.json as synced in S3 metadata")
+                          except Exception as e:
+                              print(f"Error marking {item_id}.json as synced: {e}")
                           try:
                               s3.copy_object(
                                   Bucket=BUCKET_NAME,
