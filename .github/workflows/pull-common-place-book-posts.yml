@@ -1,8 +1,6 @@
 name: Pull Common Place Book Posts from S3
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'  # Run every 6 hours
   workflow_dispatch:  # Allow manual triggering
 
 permissions:
@@ -50,7 +48,8 @@ jobs:
           
           # S3 configuration
           BUCKET_NAME = "${{ secrets.S3_BUCKET_DULY_NOTED }}"
-          FOLDER_PATH = "${{ vars.S3_BUCKET_DULY_NOTED_PATH }}"  # Should match the folder from your processor
+          RAW_DATA_FOLDER_PATH = "${{ vars.S3_BUCKET_RAW_DATA_FOLDER_PATH }}"
+          PROCESSED_ITEMS_FOLDER_PATH = "${{ vars.S3_BUCKET_PROCESSED_ITEMS_FOLDER_PATH }}"
           
           # Setup S3 client
           s3 = boto3.client('s3')
@@ -64,7 +63,7 @@ jobs:
               
               # List all JSON objects in the folder
               paginator = s3.get_paginator('list_objects_v2')
-              page_iterator = paginator.paginate(Bucket=BUCKET_NAME, Prefix=FOLDER_PATH)
+              page_iterator = paginator.paginate(Bucket=BUCKET_NAME, Prefix=RAW_DATA_FOLDER_PATH)
               
               for page in page_iterator:
                   if 'Contents' not in page:
@@ -81,21 +80,16 @@ jobs:
                       head_response = s3.head_object(Bucket=BUCKET_NAME, Key=key)
                       metadata = head_response.get('Metadata', {})
                       
-                      # Check if status is 'processed'
+                      # Check if status is 'processed' its ready to go
                       if metadata.get('status') == 'processed':
-                          # Get the item content
-                          response = s3.get_object(Bucket=BUCKET_NAME, Key=key)
-                          item = json.loads(response['Body'].read().decode('utf-8'))
-                          
-                          # Add to processed items if the JSON content also indicates processed
-                          if item.get('metadata', {}).get('status') == 'processed':
-                              processed_items.append(item)
-              
+                          # Strip off the extension from the S3 key
+                          processed_items.append(os.path.splitext(key)[0])
+
               return processed_items
           
           def find_microblog_markdown(item_id):
               """Find markdown file with microblog target for a specific item"""
-              prefix = f"{FOLDER_PATH}/{item_id}"
+              prefix = f"{PROCESSED_ITEMS_FOLDER_PATH}/{item_id}"
               
               # List all objects in the item's folder
               paginator = s3.get_paginator('list_objects_v2')
@@ -116,8 +110,8 @@ jobs:
                       head_response = s3.head_object(Bucket=BUCKET_NAME, Key=key)
                       metadata = head_response.get('Metadata', {})
                       
-                      # Check if target is 'microblog'
-                      if metadata.get('target') == 'microblog':
+                      # Check if target is 'microblog' and status is 'new'
+                      if metadata.get('target') == 'microblog' and metadata.get('status') == 'new':
                           return key
               
               return None
@@ -155,8 +149,7 @@ jobs:
               print(f"Found {len(processed_items)} processed items")
               
               # For each processed item, find and download microblog markdown
-              for item in processed_items:
-                  item_id = item['metadata']['id']
+              for item_id in processed_items:
                   print(f"Processing item {item_id}")
                   
                   # Find microblog markdown
@@ -169,9 +162,21 @@ jobs:
                       if destination:
                           new_files.append(destination)
                           
-                          # Mark as synced in S3 metadata (optional enhancement)
-                          # This would prevent re-downloading the same files on subsequent runs
-                          # For now, we'll implement this in a future update
+                          # Mark as synced in S3 metadata
+                          try:
+                              s3.copy_object(
+                                  Bucket=BUCKET_NAME,
+                                  CopySource={'Bucket': BUCKET_NAME, 'Key': markdown_key},
+                                  Key=markdown_key,
+                                  MetadataDirective='REPLACE',
+                                  Metadata={
+                                      'target': 'microblog',
+                                      'status': 'published'
+                                  }
+                              )
+                              print(f"Marked {markdown_key} as published in S3 metadata")
+                          except Exception as e:
+                              print(f"Error marking {markdown_key} as published: {e}")
               
               # Report results
               print(f"Downloaded {len(new_files)} new files")
