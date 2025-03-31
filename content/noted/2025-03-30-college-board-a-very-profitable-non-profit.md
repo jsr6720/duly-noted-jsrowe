@@ -1,5 +1,5 @@
 ---
-title: "College Board a very profitibable non-profit"
+title: "College Board a very profitable non-profit"
 author: "Commonplace Book Tools Bot"
 date: "2025-03-30T21:52:55.397902"
 generated: "2025-03-30T18:00:32-05:00"
