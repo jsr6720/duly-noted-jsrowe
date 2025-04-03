@@ -5,7 +5,7 @@ date: "2025-04-03T02:07:38.322158"
 generated: "2025-04-02T22:14:59-05:00"
 tags:
   - baseball
-  - pyhsics
+  - physics
 isBasedOn:
   type: "NewsArticle"
   headline: "The MIT Scientist Behind the ‘Torpedo Bats’ That Are Blowing Up Baseball"
@@ -18,7 +18,7 @@ guid: "ca340247-a84b-4ce3-8f7c-29b191afd557"
 
 > The result is a product that better resembles a bowling pin than a traditional bat, redistributing the weight to the area where players most often make contact with the ball. ... The goal was to use as much of that [wood] budget as possible in the ideal spot—six or 7 inches below the tip—without sacrificing swing speed.
 
-Filed under ideas that seem obvious when done in real life. 100 years of baseball and gloves have evolved every decade, bats not so much. Or as George says 'its simple pyhsics' <https://www.youtube.com/watch?v=WTwE7xDZkPk>
+Filed under ideas that seem obvious when done in real life. 100 years of baseball and gloves have evolved every decade, bats not so much. Or as George says 'its simple physics' <https://www.youtube.com/watch?v=WTwE7xDZkPk>
 
 ---
 
