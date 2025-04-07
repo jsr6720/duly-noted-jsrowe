@@ -19,7 +19,7 @@ guid: "24f25785-ffb4-4c49-adc3-6b68375980c6"
 
 > Health insurers got double-paid by the Medicaid system for the coverage of hundreds of thousands of patients across the country, costing taxpayers billions of dollars in extra payments. The insurers, which are paid by state and federal governments to cover low-income Medicaid recipients, collected at least $4.3 billion over three years for patients who were enrolled—and paid for—in other states, a Wall Street Journal analysis of Medicaid data found.
 
-Let's take a closer look at these numbers. A pet peeve of mine, this article is written with varying scales (trillions, billions, millions) and time frames. So to summarize, a program that costs $1.8 trillion dollars per years has $4.3 billion in duplicate payments over three years. Or .0043 trillion / 3*1.8 trillion. .08% of the cost of the program. And insurance is hard, why is the burdon on the indvidual to keep all of this straight?
+Let's take a closer look at these numbers. A pet peeve of mine, this article is written with varying scales (trillions, billions, millions) and time frames. So to summarize, a program that costs $1.8 trillion dollars per years has $4.3 billion in duplicate payments over three years. Or .0043 trillion / 3*1.8 trillion. .08% of the cost of the program. And insurance is hard, why is the burden on the individual to keep all of this straight?
 
 ---
 

@@ -18,7 +18,7 @@ guid: "f295c589-8b92-4394-ac32-7a2c2da48cd2"
 
 > Thune, a fourth-term senator from South Dakota, is an awkward leader for Trump’s ruthless Republican Party, in part because even Democrats invariably describe him as amiable and honest.
 
-Excellent tracing of the new Senate majoriyt leader's rise to power and what it means for the separation of powers when the current Executive Branch is pursuing rule by fiat.
+Excellent tracing of the new Senate majority leader's rise to power and what it means for the separation of powers when the current Executive Branch is pursuing rule by fiat.
 
 ---
 

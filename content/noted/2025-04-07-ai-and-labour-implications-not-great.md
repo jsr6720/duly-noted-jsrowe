@@ -20,7 +20,7 @@ guid: "9d096018-f3ee-4633-b0fc-8cfd5063c793"
 >
 > However, the UNCTAD report also highlights inequalities between nations, with U.N. data showing that 40% of global corporate research and development spending in AI is concentrated among just 100 firms, mainly those in the U.S. and China.
 
-First, original story is paywalled for jouranalist only, so I was unable to review that. Second, no suprise that the wealthiest countries are using their captial to pursue AI. Here's hoping humanity seizes the opportunity to improve everyone's lives...
+First, original story is pay-walled for journalist only, so I was unable to review that. Second, no surprise that the wealthiest countries are using their capital to pursue AI. Here's hoping humanity seizes the opportunity to improve everyone's lives...
 
 ---
 

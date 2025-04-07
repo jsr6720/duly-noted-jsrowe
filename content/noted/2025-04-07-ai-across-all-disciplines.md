@@ -18,7 +18,7 @@ guid: "9a903216-ef8f-4d1c-8be8-3ccae0561398"
 
 > We found an average time savings of 5.4% of work hours in the November 2024 survey. For an individual working 40 hours per week, saving 5.4% of work hours implies a time savings of 2.2 hours per week. When we factor in all workers, including nonusers, workers saved 1.4% of total hours because of generative AI.
 
-Note this is across all disciplines. Some tasks are more easilly assisted by AI than others. But this outlines a broad trend of at least ~5% improvement across users.
+Note this is across all disciplines. Some tasks are more easily assisted by AI than others. But this outlines a broad trend of at least ~5% improvement across users.
 
 ---
 

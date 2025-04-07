@@ -18,7 +18,7 @@ guid: "8bd621c2-c262-430c-9630-61db4eb74dda"
 
 > The thing I’m most excited about in our weird new AI-enhanced reality is the way it allows me to be more ambitious with my projects. As an experienced developer, ChatGPT (and GitHub Copilot) save me an enormous amount of “figuring things out” time.
 
-I think the key is in the expertise. As noted in other blogs AI generated code is the dophamine sugar rush of our time. Just because its sweet doesn't mean its right. Trust Simon and his expertise, but he's still publishing Python code.
+I think the key is in the expertise. As noted in other blogs AI generated code is the dopamine sugar rush of our time. Just because its sweet doesn't mean its right. Trust Simon and his expertise, but he's still publishing Python code.
 
 ---
 
