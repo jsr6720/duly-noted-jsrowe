@@ -19,7 +19,7 @@ This site merges three distinct concepts into one execution:
    First and foremost, this is a [microblog](https://en.wikipedia.org/wiki/Microblogging) - a collection of snippets I find across the interwebs.
 
 2. **Personal Knowledge Management**  
-   It is also my public [personal knowledge management](https://en.wikipedia.org/wiki/Personal_knowledge_management) system. It's more dynamic than republishing links on an RSS feed, and is loosely inspired by [StumbleUpon](https://en.wikipedia.org/wiki/StumbleUpon) and [del.icio.us](https://en.wikipedia.org/wiki/Delicious_(website)).
+   It is also my public [personal knowledge management](https://en.wikipedia.org/wiki/Personal_knowledge_management) system. It's more dynamic than republishing links on an RSS feed, and is loosely inspired by other link aggregators like [StumbleUpon](https://en.wikipedia.org/wiki/StumbleUpon), [del.icio.us](https://en.wikipedia.org/wiki/Delicious_(website)), and [Pocket](https://en.wikipedia.org/wiki/Pocket_(service)). All of which have shut down, hence this pet project.
 
 3. **Commonplace Book**  
    Finally, it's a digital version of a [commonplace book](https://en.wikipedia.org/wiki/Commonplace_book) where I digitally "snip" articles and thoughts and include them here.
