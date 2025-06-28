@@ -8,7 +8,7 @@ tags:
   - programming
 isBasedOn:
   type: "NewsArticle"
-  headline: ""Learn to Code" Backfires Spectacularly as Comp-Sci Majors Suddenly Have Sky-High Unemployment"
+  headline: "'Learn to Code' Backfires Spectacularly as Comp-Sci Majors Suddenly Have Sky-High Unemployment"
   url: "https://futurism.com/computer-science-majors-high-unemployment-rate"
   author: "NOOR AL-SIBAI"
   datePublished: "MAY 31, 6:45 AM EDT"
