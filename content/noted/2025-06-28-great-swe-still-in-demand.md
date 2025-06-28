@@ -7,7 +7,7 @@ tags:
   - engineering
 isBasedOn:
   type: "BlogPosting"
-  headline: "The software engineering "squeeze" Becoming a software engineer was a life hack. The best profession on earth deserved the wake up call"
+  headline: "The software engineering 'squeeze' Becoming a software engineer was a life hack. The best profession on earth deserved the wake up call"
   url: "https://newsletter.manager.dev/p/the-software-engineering-squeeze"
   author: "ANTON ZAIDES"
   datePublished: "JUN 24, 2025"
