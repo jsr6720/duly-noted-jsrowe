@@ -1,1 +1,140 @@
-/** place for custom css code when i get back to it */
+/** Index card / Lab notebook styling - Meticulous scientist aesthetic */
+
+/* Design system colors */
+:root {
+  --card-blue: #0066CC;
+  --highlight-yellow: rgba(255, 245, 157, 0.4);
+  --text-dark: #1a1a1a;
+  --text-medium: #555;
+  --ink-dark: #1e293b;
+  --neutral-bg: #f8f8f8;
+  --neutral-border: #e0e0e0;
+  --grid-dots: #e8e8e8;
+}
+
+/* Typography - Lab notebook feel */
+body {
+  font-family: 'Courier New', 'Courier', monospace;
+  color: var(--text-dark);
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Page background - clean white */
+body, .main, .wrapper {
+  background-color: #fff;
+}
+
+/* Individual entry cards - dot matrix background */
+.list__item, article.post {
+  position: relative;
+  margin-bottom: 3rem;
+  padding: 2.5rem;
+  background-color: #fefefe;
+  background-image: radial-gradient(circle, var(--grid-dots) 0.8px, transparent 0.8px);
+  background-size: 20px 20px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Note subtitle - handwritten annotation feel */
+.list__lead, .post__lead {
+  font-family: 'Georgia', serif;
+  font-style: italic;
+  color: var(--text-medium);
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95em;
+}
+
+/* Header spacing */
+.list__header, .post__header {
+  margin-bottom: 2rem;
+}
+
+/* Blockquotes - highlighted passage with annotation line */
+.list__excerpt blockquote, .post__content blockquote {
+  border-left: 2px solid var(--ink-dark);
+  padding-left: 1.2rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  background: var(--highlight-yellow);
+  font-family: 'Georgia', serif;
+}
+
+.logo__subtitle {
+  color: var(--ink-dark) !important;
+}
+
+/* Links - consistent blue ink */
+a, a:link, a:visited {
+  color: var(--card-blue) !important;
+  text-decoration: none !important;
+  border-bottom: 1px dotted transparent !important;
+  transition: border-bottom 0.2s;
+}
+
+a:hover, a:active {
+  color: var(--card-blue) !important;
+  border-bottom: 1px dotted var(--card-blue) !important;
+  text-decoration: none !important;
+}
+
+/* Sidebar widgets - card divider labels */
+.widget {
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #ddd;
+  padding: 1rem;
+}
+
+.widget__title {
+  font-family: 'Georgia', serif;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-medium);
+}
+
+/* Navigation - clean neutral */
+.header, nav.menu, .footer, .menu__list {
+  background-color: var(--neutral-bg) !important;
+  border-color: var(--neutral-border) !important;
+}
+
+.menu__list a:hover, .menu__item:hover {
+  background-color: transparent !important;
+  text-decoration: underline !important;
+}
+
+/* Pagination buttons - clean neutral */
+.pagination__item, .pagination__item--current {
+  background-color: var(--neutral-bg) !important;
+  border-color: var(--neutral-border) !important;
+  color: var(--ink-dark) !important;
+}
+
+.pagination__item:hover {
+  background-color: var(--highlight-yellow) !important;
+}
+
+/* Tag/button styling - clean with yellow highlight on hover */
+.widget-taglist__link, .post__tag, .tags__link, .menu__list a, .btn, .tags__item {
+  background-color: transparent !important;
+  border: 1px solid var(--neutral-border) !important;
+  color: var(--card-blue) !important;
+}
+
+.widget-taglist__link:hover, .post__tag:hover, .tags__link:hover, .menu__list a:hover, .btn:hover, .tags__item:hover {
+  background-color: var(--highlight-yellow) !important;
+  color: var(--ink-dark) !important;
+}
+
+.tags__badge {
+  display: none !important;
+}

@@ -1,0 +1,37 @@
+<article class="list__item post">
+	{{ partial "post_thumbnail.html" (dict "class" "list" "page" .) }}
+	<header class="list__header">
+		{{- if .Params.isBasedOn }}
+		{{- /* Index card format for commonplace book entries */ -}}
+		<h2 class="list__title post__title">
+			<a href="{{ .RelPermalink }}" rel="bookmark">
+			Author: {{ .Params.isBasedOn.author }}
+			</a>
+		</h2>
+		<p class="list__lead post__lead">Note: {{ .Title }}</p>
+		{{- else }}
+		{{- /* Traditional format for posts without isBasedOn */ -}}
+		<h2 class="list__title post__title">
+			<a href="{{ .RelPermalink }}" rel="bookmark">
+			{{ .Title }}
+			</a>
+		</h2>
+		{{- with .Params.lead }}
+		<p class="list__lead post__lead">{{ . }}</p>
+		{{- end }}
+		{{- end }}
+		{{ with partial "post_meta.html" . -}}
+		<div class="list__meta meta">{{ . }}</div>
+		{{- end }}
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		{{ .Summary }}
+	</div>
+	{{- if .Site.Params.readmore }}
+	{{- if .Truncated }}
+	<div class="list__footer clearfix">
+		<a class="list__footer-readmore btn" href="{{ .RelPermalink }}">{{ T "read_more" }}</a>
+	</div>
+	{{- end }}
+	{{- end }}
+</article>

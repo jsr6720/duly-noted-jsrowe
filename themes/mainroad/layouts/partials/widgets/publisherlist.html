@@ -12,9 +12,11 @@
 	<h4 class="widget__title">Publishers ({{ len $publishers }})</h4>
 	<div class="widget__content">
 	{{- range $name, $count := $publishers }}
+		{{- if ge $count 3 }}
 		<a class="widget-taglist__link widget__link btn" href="#" title="{{ $name }}">
 			{{- $name -}}{{- if $.Site.Params.widgets.publisherlist.counter }} ({{ $count }}){{ end -}}
 		</a>
+		{{- end }}
 	{{- end }}
 	</div>
 </div>

@@ -1,0 +1,13 @@
+<footer class="footer">
+	<div class="container footer__container flex">
+		{{ partial "footer_links.html" . }}
+		<div class="footer__copyright">
+			&copy; {{ now.Format "2006" }} {{ .Site.Params.copyright | default .Site.Title }}.
+			<span class="footer__copyright-credits">
+				Generated with Commonplace Book Tools |
+				Built by <a href="https://wiglafsoftware.com">Wiglaf Software&trade;</a> |
+				<a href="https://linkedin.com/in/jsr6720">LinkedIn</a>
+			</span>
+		</div>
+	</div>
+</footer>

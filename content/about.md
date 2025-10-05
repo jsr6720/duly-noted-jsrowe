@@ -40,3 +40,5 @@ This site especially borrows heavily from [Simon Willison's TIL](https://til.sim
 Same, Simon, Same.
 
 While building this project I found <https://notes.andymatuschak.org/About_these_notes>, and <https://notes.jim-nielsen.com> which I find to be *Chef's Kiss*. Ironically via Simon's [main blog](https://simonwillison.net/2025/Mar/10/building-websites-with-llms/). It truly is [blog posts](https://interconnected.org/home/2025/02/19/reflections) all the way down.
+
+[Learn more about me at jsrowe.com/about](https://jsrowe.com/about)

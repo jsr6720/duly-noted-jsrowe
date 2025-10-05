@@ -57,7 +57,7 @@ params:
     bio: "I write stuff."
   # avatar: "img/avatar.png"  # put this image in static/img/
   description: "A Microblog of Encountered Ideas."
-  copyright: "© 2021 James Rowe"
+  copyright: "James Rowe"
   favicon: "favicon.ico"  # put this image in static/img/
   twitter-cards: true
   pager: true
@@ -77,7 +77,7 @@ params:
 
   style:
     vars:
-      highlightColor: "#E30613"
+      highlightColor: "#1e293b"
 
   # Customize the main menu
   mainSections:
@@ -142,7 +142,6 @@ params:
     #  - categories
       - taglist        # Show tags
       - publisherlist  # Show publishers
-      - social         # Show social links
 
 # Menu items just spool posts
 menu:

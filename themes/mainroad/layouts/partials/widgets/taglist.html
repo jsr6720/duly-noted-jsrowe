@@ -4,10 +4,12 @@
 	<h4 class="widget__title">{{ T "tags_title" }} ({{ len $tags }})</h4>
 	<div class="widget__content">
 	{{- range $name, $taxonomy := $tags }}
+		{{- if ge $taxonomy.Count 3 }}
 		{{- with $.Site.GetPage (printf "/tags/%s" $name) }}
 		<a class="widget-taglist__link widget__link btn" href="{{ .RelPermalink }}" title="{{ .Title }}">
 			{{- .Title -}}{{- if $.Site.Params.widgets.taglist.counter }} ({{ $taxonomy.Count }}){{ end -}}
 		</a>
+		{{- end }}
 		{{- end }}
 	{{- end }}
 	</div>
