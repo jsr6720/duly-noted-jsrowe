@@ -1,5 +1,5 @@
 ---
-title: "finding the right "metric" for ai productivity - hint its not lines of code"
+title: "finding the right \"metric\" for ai productivity - hint its not lines of code"
 author: "Commonplace Book Tools Bot"
 date: "2025-10-04T23:49:04.315612+00:00"
 generated: "2025-10-04T21:25:44-05:00"

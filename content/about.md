@@ -1,5 +1,5 @@
 ---
-title: "About Duly Noted"
+title: "About"
 description: "A digital commonplace book for encountered ideas"
 date: "2025-03-15"
 menu:
@@ -8,10 +8,10 @@ menu:
   footer:
     weight: 10
 # Theme-Defined params
-lead: "A microblog of encountered ideas worth remembering" 
+lead: "A microblog of encountered ideas worth remembering"
 auto_generated: false
 ---
-## About Duly Noted
+## About
 
 This site merges three distinct concepts into one execution:
 

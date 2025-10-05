@@ -113,6 +113,9 @@ params:
     taglist:
       cached: true
       counter: true
+    publisherlist:
+      cached: true
+      counter: true
     social:
       cached: true
       # Enable social links widget
@@ -134,11 +137,12 @@ params:
     list: "right"
     single: false
     widgets:
-      - search    # Optional
-    #  - recent    # Show recent posts
-    #  - categories 
-      - taglist   # Show tags
-      - social    # Show social links
+      - search         # Optional
+    #  - recent        # Show recent posts
+    #  - categories
+      - taglist        # Show tags
+      - publisherlist  # Show publishers
+      - social         # Show social links
 
 # Menu items just spool posts
 menu:

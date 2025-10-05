@@ -1,0 +1,20 @@
+{{ define "main" }}
+<main class="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">{{ .Title }}</h1>
+		</header>
+		<div class="post__content clearfix">
+			{{ .Content }}
+
+			<h2>Publishers</h2>
+			<p>Sources where ideas in this commonplace book originate.</p>
+			{{ partial "widgets/publisherlist.html" . }}
+
+			<h2>Tags</h2>
+			<p>Topical categories across all posts.</p>
+			{{ partial "widgets/taglist.html" . }}
+		</div>
+	</article>
+</main>
+{{ end }}
