@@ -23,6 +23,7 @@ Thumbs.db
 # Hugo cache & temp data
 .cache/
 hugo_cache/
+.hugo_build.lock
 
 
 # .github/workflows artifacts

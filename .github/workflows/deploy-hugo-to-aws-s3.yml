@@ -20,14 +20,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          submodules: false  # i don't use submodules, but if I did. set to true
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-      
+          fetch-depth: 0  # Fetch all history for .Lastmod in Hugo templates
+
+      - name: Read Hugo version
+        id: hugo-version
+        run: echo "version=$(cat .hugo-version)" >> $GITHUB_OUTPUT
+
       - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
+        uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
-          # extended: true  # Uncomment if you need the extended version
+          hugo-version: ${{ steps.hugo-version.outputs.version }}
+          extended: true
       
       - name: Build Hugo site
         run: hugo --minify
