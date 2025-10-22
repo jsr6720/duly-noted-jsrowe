@@ -9,7 +9,7 @@ tags:
   - jobs
 isBasedOn:
   type: "NewsArticle"
-  headline: "Sam Altman Says If Jobs Gets Wiped Out, Maybe They Weren't Even "Real Work" to Start With"
+  headline: "Sam Altman Says If Jobs Gets Wiped Out, Maybe They Weren't Even \"Real Work\" to Start With"
   url: "https://futurism.com/artificial-intelligence/sam-altman-real-work-ai"
   author: "Frank Landymore"
   datePublished: "Oct 12, 2025 10:30 AM EDT"
