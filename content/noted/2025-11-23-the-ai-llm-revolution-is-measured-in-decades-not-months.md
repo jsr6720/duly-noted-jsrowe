@@ -9,7 +9,7 @@ tags:
   - regulations
 isBasedOn:
   type: "BlogPosting"
-  headline: "Yann LeCun on X: "It seems to me that before "urgently figuring out how to control AI systems much smarter than us" we need to have the beginning of a hint of a design for a system smarter than a house cat. Such a sense of urgency reveals an extremely distorted view of reality. No wonder the more" / X"
+  headline: "Yann LeCun on X: \"It seems to me that before \"urgently figuring out how to control AI systems much smarter than us\" we need to have the beginning of a hint of a design for a system smarter than a house cat. Such a sense of urgency reveals an extremely distorted view of reality. No wonder the more\" / X"
   url: "https://x.com/ylecun/status/1791890883425570823"
   author: "X (formerly Twitter)"
   datePublished: "2024-05-17"

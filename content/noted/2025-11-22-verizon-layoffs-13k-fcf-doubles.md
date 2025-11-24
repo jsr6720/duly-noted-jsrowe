@@ -4,14 +4,9 @@ author: "Commonplace Book Tools Bot"
 date: "2025-11-22T03:13:35.776811+00:00"
 generated: "2025-11-23T19:16:23-05:00"
 tags:
-  - Verizon Communications Inc
-  - United States
-  - Personnel
-  - Telecommunications
-  - Breaking News: Technology
-  - Technology
-  - Business
-  - business news
+  - verizon
+  - layoffs
+  - business
 isBasedOn:
   type: "NewsArticle"
   headline: "Verizon cutting more than 13,000 jobs as it restructures"

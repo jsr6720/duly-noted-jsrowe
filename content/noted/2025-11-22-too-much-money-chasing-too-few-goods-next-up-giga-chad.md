@@ -7,7 +7,7 @@ tags:
   - ai
 isBasedOn:
   type: "CreativeWork"
-  headline: "Y Combinator on X: "Chad IDE (@cladlabs) is the brainrot code editor. AI coding takes 1–5 min between prompts—too long to ignore, too short to start something new.  Chad integrates your brainrot (X, IG, Stake, Tinder, etc) into your agentic coding workflow and helps to manage your https://t.co/CuQ6STMxYo" / X"
+  headline: "Y Combinator on X: \"Chad IDE (@cladlabs) is the brainrot code editor. AI coding takes 1–5 min between prompts—too long to ignore, too short to start something new.  Chad integrates your brainrot (X, IG, Stake, Tinder, etc) into your agentic coding workflow and helps to manage your https://t.co/CuQ6STMxYo\" / X"
   url: "https://x.com/ycombinator/status/1988366241460089118"
   author: "X (formerly Twitter)"
   datePublished: "2025-11-11"

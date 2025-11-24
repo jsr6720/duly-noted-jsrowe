@@ -8,7 +8,7 @@ tags:
   - business
 isBasedOn:
   type: "BlogPosting"
-  headline: ""Good engineering management" is a fad | Irrational Exuberance"
+  headline: "\"Good engineering management\" is a fad | Irrational Exuberance"
   url: "https://lethain.com/good-eng-mgmt-is-a-fad/"
   author: "lethain.com"
   datePublished: "2025-10-26"

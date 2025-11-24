@@ -1,5 +1,5 @@
 ---
-title: "the housing market - "mom and pop" vs the institutional investor"
+title: "the housing market - \"mom and pop\" vs the institutional investor"
 author: "Commonplace Book Tools Bot"
 date: "2025-11-24T00:00:09.667883+00:00"
 generated: "2025-11-23T19:15:59-05:00"

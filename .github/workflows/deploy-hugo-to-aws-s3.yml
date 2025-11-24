@@ -36,10 +36,9 @@ jobs:
         run: hugo --minify
       
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1.7.0
+        uses: aws-actions/configure-aws-credentials@v5
         with:
           role-to-assume: ${{ secrets.AWS_GHA_ROLE_TO_ASSUME }}
-          role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ vars.AWS_REGION }}
       
       - name: Deploy to S3 and Invalidate CloudFront cache
