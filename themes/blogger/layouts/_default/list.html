@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{ if not .IsHome }}
+<div class="list-context">
+    {{ if eq .Data.Singular "tag" }}
+    <h1 class="filter-heading">Tagged: <span class="filter-value">{{ .Title }}</span></h1>
+    {{ else }}
+    <h1 class="filter-heading">{{ .Title }}</h1>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ if gt .Paginator.TotalPages 1 }}
+<nav class="pagination pagination-top">
+    {{ if .Paginator.HasPrev }}
+    <a href="{{ .Paginator.Prev.URL }}" class="pagination-link">← Newer</a>
+    {{ end }}
+
+    <span class="pagination-info">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+
+    {{ if .Paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}" class="pagination-link">Older →</a>
+    {{ end }}
+</nav>
+{{ end }}
+
+<div class="posts">
+    {{ range .Paginator.Pages }}
+    {{ $colorClass := "" }}
+
+    {{ if .Params.tags }}
+        {{ $colorKey := index .Params.tags 0 }}
+        {{ with index $.Site.Params.tagColors $colorKey }}
+            {{ $colorClass = printf "color-%d" . }}
+        {{ end }}
+    {{ end }}
+
+    <a href="{{ .RelPermalink }}" class="post-summary-link {{ $colorClass }}" tabindex="0">
+        <article class="post-summary">
+            {{ if .Params.isBasedOn }}
+            <h2 class="entry-headline">{{ .Params.isBasedOn.headline }}</h2>
+            <div class="entry-byline">by {{ .Params.isBasedOn.author }}{{ with .Params.isBasedOn.publisher }} on {{ . }}{{ end }}</div>
+            {{ if .Params.tags }}
+            <div class="tags tags-card">
+                {{ range .Params.tags }}
+                <span class="tag-card">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            <div class="entry-note">{{ .Title }}</div>
+            <div class="entry-date">Noted {{ .Date.Format "January 2, 2006" }}</div>
+            {{ else }}
+            <h2 class="entry-headline">{{ .Title }}</h2>
+            {{ if .Params.tags }}
+            <div class="tags tags-card">
+                {{ range .Params.tags }}
+                <span class="tag-card">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            <div class="entry-date">Noted {{ .Date.Format "January 2, 2006" }}</div>
+            {{ end }}
+        </article>
+    </a>
+    {{ end }}
+</div>
+
+{{ if gt .Paginator.TotalPages 1 }}
+<nav class="pagination">
+    {{ if .Paginator.HasPrev }}
+    <a href="{{ .Paginator.Prev.URL }}" class="pagination-link">← Newer</a>
+    {{ end }}
+
+    <span class="pagination-info">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
+
+    {{ if .Paginator.HasNext }}
+    <a href="{{ .Paginator.Next.URL }}" class="pagination-link">Older →</a>
+    {{ end }}
+</nav>
+{{ end }}
+{{ end }}

@@ -1,140 +1,182 @@
-/** Index card / Lab notebook styling - Meticulous scientist aesthetic */
+/** Tumblr meets Academic Journal - Quote-focused commonplace book */
 
 /* Design system colors */
 :root {
-  --card-blue: #0066CC;
-  --highlight-yellow: rgba(255, 245, 157, 0.4);
-  --text-dark: #1a1a1a;
-  --text-medium: #555;
-  --ink-dark: #1e293b;
-  --neutral-bg: #f8f8f8;
-  --neutral-border: #e0e0e0;
-  --grid-dots: #e8e8e8;
+  --page-bg: #f5f3ef;           /* Warm cream, not stark white */
+  --card-bg: #fdfcfa;           /* Slightly lighter cream for cards */
+  --text-primary: #2c2c2c;      /* Dark, readable text */
+  --text-secondary: #5a5a5a;    /* Medium gray for meta info */
+  --text-muted: #8a8a8a;        /* Lighter gray for subtle elements */
+  --accent-blue: #2563eb;       /* Modern blue for links */
+  --accent-highlight: #fef3c7;  /* Soft yellow highlight */
+  --border-subtle: #e5e1da;     /* Warm border */
+  --quote-border: #94a3b8;      /* Slate for quote bars */
 }
 
-/* Typography - Lab notebook feel */
+/* Typography - Readable and elegant */
 body {
-  font-family: 'Courier New', 'Courier', monospace;
-  color: var(--text-dark);
-  line-height: 1.8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  color: var(--text-primary);
+  line-height: 1.75;
+  font-size: 17px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-weight: 600;
   letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
-/* Page background - clean white */
+/* Page background - warm cream */
 body, .main, .wrapper {
-  background-color: #fff;
+  background-color: var(--page-bg);
 }
 
-/* Individual entry cards - dot matrix background */
+/* Individual entry cards - generous spacing, no visual noise */
 .list__item, article.post {
   position: relative;
-  margin-bottom: 3rem;
-  padding: 2.5rem;
-  background-color: #fefefe;
-  background-image: radial-gradient(circle, var(--grid-dots) 0.8px, transparent 0.8px);
-  background-size: 20px 20px;
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+  padding: 3rem 3.5rem;
+  max-width: 720px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-/* Note subtitle - handwritten annotation feel */
+/* Note subtitle - Tumblr-style meta */
 .list__lead, .post__lead {
   font-family: 'Georgia', serif;
   font-style: italic;
-  color: var(--text-medium);
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-  font-size: 0.95em;
-}
-
-/* Header spacing */
-.list__header, .post__header {
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
   margin-bottom: 2rem;
+  font-size: 1em;
+  line-height: 1.6;
 }
 
-/* Blockquotes - highlighted passage with annotation line */
+/* Header spacing - generous breathing room */
+.list__header, .post__header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Blockquotes - Tumblr-style quoted passages */
 .list__excerpt blockquote, .post__content blockquote {
-  border-left: 2px solid var(--ink-dark);
-  padding-left: 1.2rem;
-  margin: 1.5rem 0;
+  border-left: 4px solid var(--quote-border);
+  padding: 1.5rem 1.75rem;
+  margin: 2.5rem 0;
   font-style: italic;
-  background: var(--highlight-yellow);
+  background: var(--accent-highlight);
   font-family: 'Georgia', serif;
+  font-size: 1.1em;
+  line-height: 1.65;
+  color: var(--text-primary);
+}
+
+/* Content area - extra breathing room */
+.content.post__content {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+.content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Citation styling - academic feel */
+.post__content sub, .post__content cite {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  line-height: 1.5;
 }
 
 .logo__subtitle {
-  color: var(--ink-dark) !important;
+  color: var(--text-secondary) !important;
 }
 
-/* Links - consistent blue ink */
+/* Links - clean and readable */
 a, a:link, a:visited {
-  color: var(--card-blue) !important;
+  color: var(--accent-blue) !important;
   text-decoration: none !important;
-  border-bottom: 1px dotted transparent !important;
-  transition: border-bottom 0.2s;
+  border-bottom: 1px solid transparent !important;
+  transition: all 0.15s ease;
 }
 
 a:hover, a:active {
-  color: var(--card-blue) !important;
-  border-bottom: 1px dotted var(--card-blue) !important;
+  color: var(--accent-blue) !important;
+  border-bottom: 1px solid var(--accent-blue) !important;
   text-decoration: none !important;
 }
 
-/* Sidebar widgets - card divider labels */
+/* Sidebar widgets - minimal and clean */
 .widget {
-  font-family: 'Courier New', monospace;
-  background: rgba(255, 255, 255, 0.6);
-  border: 1px solid #ddd;
-  padding: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .widget__title {
   font-family: 'Georgia', serif;
-  font-size: 0.9em;
+  font-size: 0.85em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-medium);
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
 }
 
-/* Navigation - clean neutral */
+/* Navigation - subtle and clean */
 .header, nav.menu, .footer, .menu__list {
-  background-color: var(--neutral-bg) !important;
-  border-color: var(--neutral-border) !important;
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-subtle) !important;
 }
 
 .menu__list a:hover, .menu__item:hover {
-  background-color: transparent !important;
-  text-decoration: underline !important;
+  background-color: var(--accent-highlight) !important;
 }
 
-/* Pagination buttons - clean neutral */
+/* Pagination buttons - clean and minimal */
 .pagination__item, .pagination__item--current {
-  background-color: var(--neutral-bg) !important;
-  border-color: var(--neutral-border) !important;
-  color: var(--ink-dark) !important;
+  background-color: var(--card-bg) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
 }
 
 .pagination__item:hover {
-  background-color: var(--highlight-yellow) !important;
+  background-color: var(--accent-highlight) !important;
+  border-color: var(--accent-blue) !important;
 }
 
-/* Tag/button styling - clean with yellow highlight on hover */
+/* Tag/button styling - subtle with soft highlight */
 .widget-taglist__link, .post__tag, .tags__link, .menu__list a, .btn, .tags__item {
   background-color: transparent !important;
-  border: 1px solid var(--neutral-border) !important;
-  color: var(--card-blue) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+  transition: all 0.15s ease;
 }
 
 .widget-taglist__link:hover, .post__tag:hover, .tags__link:hover, .menu__list a:hover, .btn:hover, .tags__item:hover {
-  background-color: var(--highlight-yellow) !important;
-  color: var(--ink-dark) !important;
+  background-color: var(--accent-highlight) !important;
+  border-color: var(--accent-blue) !important;
+  color: var(--text-primary) !important;
 }
 
 .tags__badge {
   display: none !important;
+}
+
+/* Post meta info - academic style */
+.post__meta, .meta {
+  color: var(--text-muted);
+  font-size: 0.9em;
+  margin-top: 0.5rem;
+}
+
+/* Footer citations - smaller and subtle */
+.post__footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-subtle);
 }

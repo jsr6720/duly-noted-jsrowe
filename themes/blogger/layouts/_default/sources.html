@@ -1,0 +1,47 @@
+{{ define "main" }}
+<article class="post">
+    <header class="post-header">
+        <h1 class="post-title">{{ .Title }}</h1>
+        {{ with .Params.description }}
+        <p class="post-subtitle">{{ . }}</p>
+        {{ end }}
+    </header>
+
+    <div class="post-content">
+        {{ .Content }}
+
+        <h2>Publishers</h2>
+        <div class="sources-list">
+            {{ $publishers := slice }}
+            {{ range where .Site.RegularPages "Section" "noted" }}
+                {{ with .Params.isBasedOn.publisher }}
+                    {{ $publishers = $publishers | append . }}
+                {{ end }}
+            {{ end }}
+            {{ $uniquePublishers := $publishers | uniq }}
+            {{ range sort $uniquePublishers }}
+                {{ $publisher := . }}
+                {{ $count := 0 }}
+                {{ range where $.Site.RegularPages "Section" "noted" }}
+                    {{ if eq .Params.isBasedOn.publisher $publisher }}
+                        {{ $count = add $count 1 }}
+                    {{ end }}
+                {{ end }}
+                <div class="source-item">
+                    <span class="source-name">{{ $publisher }}</span>
+                    <span class="source-count">{{ $count }} {{ if eq $count 1 }}post{{ else }}posts{{ end }}</span>
+                </div>
+            {{ end }}
+        </div>
+
+        <h2>Tags</h2>
+        <div class="tag-cloud-page">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <a href="{{ "tags/" | relURL }}{{ $name | urlize }}/" class="tag-cloud-item-page">
+                {{ $name }} <span class="tag-count">({{ $taxonomy.Count }})</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</article>
+{{ end }}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "en-us" }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if not .IsHome }}{{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+    {{ if .IsPage }}
+    {{ $noteId := .File.UniqueID }}
+    {{ with .Params.guid }}{{ $noteId = . }}{{ end }}
+    <meta name="note-id" content="{{ $noteId }}">
+    {{ end }}
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+    {{ if .Site.Params.favicon }}
+    <link rel="icon" href="{{ .Site.Params.favicon | relURL }}">
+    {{ end }}
+    {{ with .OutputFormats.Get "RSS" }}
+    <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
+    {{ end }}
+    <script src="{{ "js/random.js" | relURL }}"></script>
+</head>
+<body class="{{ if .IsPage }}page-single{{ else }}page-list{{ end }}">
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-brand">
+                {{ if .Site.Params.logo.image }}
+                <img src="{{ .Site.Params.logo.image | relURL }}" alt="{{ .Site.Title }}" class="site-logo">
+                {{ end }}
+                <div class="brand-text">
+                    <h1 class="site-title">
+                        <a href="{{ "/" | relURL }}">{{ .Site.Title }}</a>
+                    </h1>
+                    {{ with .Site.Params.logo.subtitle }}
+                    <p class="site-subtitle">{{ . }}</p>
+                    {{ end }}
+                </div>
+            </div>
+
+            {{ if .Site.Menus.main }}
+            <nav class="site-nav">
+                {{ range .Site.Menus.main }}
+                <a href="{{ .URL | relURL }}">{{ .Name }}</a>
+                {{ end }}
+                <a href="#" onclick="goToRandomNote(); return false;">Random</a>
+            </nav>
+            {{ end }}
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content-grid">
+            <aside class="sidebar">
+                {{ partial "sidebar.html" . }}
+            </aside>
+
+            <main class="main-content">
+                {{ block "main" . }}{{ end }}
+            </main>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; {{ now.Year }} <a href="https://jsrowe.com/" target="_blank" rel="noopener">{{ .Site.Params.copyright }}</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a></p>
+            <p>Built by <a href="https://wiglafsoftware.com" target="_blank" rel="noopener">Wiglaf Software™</a> using <a href="https://en.wikipedia.org/wiki/Commonplace_book" target="_blank" rel="noopener">Commonplace Book</a> principles</p>
+            <p class="build-time">Last deployed {{ now.UTC.Format "2006-01-02 15:04 UTC" }}</p>
+        </div>
+    </footer>
+</body>
+</html>

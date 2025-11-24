@@ -1,0 +1,5 @@
+name = "Blogger"
+license = "MIT"
+description = "Minimal quote-focused theme inspired by classic Blogger"
+homepage = "https://noted.jsrowe.com"
+min_version = "0.110.0"

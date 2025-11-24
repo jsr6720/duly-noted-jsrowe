@@ -1,0 +1,67 @@
+{{ define "main" }}
+{{ $noteId := .File.UniqueID }}
+{{ with .Params.guid }}{{ $noteId = . }}{{ end }}
+<article class="post" data-note-id="{{ $noteId }}">
+    {{ if .Params.isBasedOn }}
+    <div class="entry-headline">{{ .Params.isBasedOn.headline }}</div>
+    <div class="entry-byline">by {{ .Params.isBasedOn.author }}{{ with .Params.isBasedOn.publisher }} on {{ . }}{{ end }}</div>
+
+    {{ if .Params.tags }}
+    <div class="tags tags-header">
+        {{ range .Params.tags }}
+        <a href="{{ "tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .File }}
+    <div class="entry-date">
+        <a href="https://github.com/jsr6720/duly-noted-jsrowe/blob/main/content/{{ .Path }}" target="_blank" rel="noopener" class="source-link">
+            Noted {{ $.Date.Format "January 2, 2006" }}
+        </a>
+    </div>
+    {{ else }}
+    <div class="entry-date">Noted {{ .Date.Format "January 2, 2006" }}</div>
+    {{ end }}
+
+    <div class="post-content">
+        <div class="entry-note">{{ .Title }}</div>
+        {{ .Content }}
+    </div>
+    {{ else }}
+    <div class="entry-headline">{{ .Title }}</div>
+
+    {{ if .Params.tags }}
+    <div class="tags tags-header">
+        {{ range .Params.tags }}
+        <a href="{{ "tags/" | relURL }}{{ . | urlize }}/" class="tag">{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    {{ with .File }}
+    <div class="entry-date">
+        <a href="https://github.com/jsr6720/duly-noted-jsrowe/blob/main/content/{{ .Path }}" target="_blank" rel="noopener" class="source-link">
+            Noted {{ $.Date.Format "January 2, 2006" }}
+        </a>
+    </div>
+    {{ else }}
+    <div class="entry-date">Noted {{ .Date.Format "January 2, 2006" }}</div>
+    {{ end }}
+
+    <div class="post-content">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    <nav class="post-navigation">
+        {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" class="nav-link nav-prev">← Previous note</a>
+        {{ end }}
+        <a href="{{ "/" | relURL }}" class="nav-link nav-home">Back to filing cabinet</a>
+        {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="nav-link nav-next">Next note →</a>
+        {{ end }}
+    </nav>
+</article>
+{{ end }}

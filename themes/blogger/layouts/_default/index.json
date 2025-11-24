@@ -1,0 +1,11 @@
+{{- $pages := where .Site.RegularPages "Section" "noted" -}}
+[
+{{- range $index, $page := $pages -}}
+  {{- if $index -}},{{- end }}
+  {
+    "title": {{ .Title | jsonify }},
+    "url": {{ .RelPermalink | jsonify }},
+    "date": {{ .Date.Format "2006-01-02" | jsonify }}
+  }
+{{- end -}}
+]

@@ -2,16 +2,10 @@
 title: "About"
 description: "A digital commonplace book for encountered ideas"
 date: "2025-03-15"
-menu:
-  main:
-    weight: 10
-  footer:
-    weight: 10
 # Theme-Defined params
 lead: "A microblog of encountered ideas worth remembering"
 auto_generated: false
 ---
-## About
 
 This site merges three distinct concepts into one execution:
 

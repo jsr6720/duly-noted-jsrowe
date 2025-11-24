@@ -6,18 +6,24 @@ url: "https://noted.jsrowe.com"
 baseURL: "/"
 languageCode: "en-us"
 title: "Duly Noted"
-theme: "mainroad"
+theme: "blogger"
 
 permalinks:
   noted: "/:slug/"
 
 pagination:
-  pagerSize: 10
+  pagerSize: 30
+
+outputFormats:
+  RSS:
+    mediaType: application/rss+xml
+    baseName: feed
 
 outputs:
   home:
     - HTML
     - RSS
+    - JSON
   taxonomy:
     - HTML
     - RSS 
@@ -51,6 +57,51 @@ params:
     menuNavigation: true  # Enable menu navigation
     menuNavigationTitle: "Menu"  # Optional custom menu navigation title
     menuNavigationIcon: "fa-bars"  # Optional custom menu navigation icon
+
+  # Semantic tag-to-color mapping for sticky note cards
+  # 0=yellow, 1=mint, 2=blue, 3=green, 4=lavender, 5=peach
+  # Unmapped tags fall back to hash-based assignment
+  tagColors:
+    # AI & Tech (blue) - your dominant topic cluster
+    ai: 2
+    openai: 2
+    anthropic: 2
+    claude: 2
+    chatgpt: 2
+    llm: 2
+    ml: 2
+    agi: 2
+    # Programming & Software (mint)
+    programming: 1
+    software: 1
+    engineering: 1
+    technology: 1
+    architecture: 1
+    git: 1
+    javascript: 1
+    # Economics & Finance (green)
+    economics: 3
+    economy: 3
+    business: 3
+    finance: 3
+    markets: 3
+    investing: 3
+    fintech: 3
+    # Predictions & Philosophy (lavender)
+    predictions: 4
+    ethics: 4
+    advice: 4
+    # Work & Careers (yellow)
+    jobs: 0
+    careers: 0
+    layoffs: 0
+    management: 0
+    leadership: 0
+    hr: 0
+    # Productivity & Learning (peach)
+    productivity: 5
+    education: 5
+
   # Author information
   author:
     name: "James Rowe"
@@ -150,3 +201,11 @@ menu:
       name: "Duly Noted"
       url: "/"
       weight: 1
+    - identifier: "about"
+      name: "About"
+      url: "/about/"
+      weight: 10
+    - identifier: "sources"
+      name: "Sources"
+      url: "/sources/"
+      weight: 20
