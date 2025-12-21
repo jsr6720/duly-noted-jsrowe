@@ -197,15 +197,15 @@ params:
 # Menu items just spool posts
 menu:
   main:
-    - identifier: "noted"
-      name: "Duly Noted"
-      url: "/"
-      weight: 1
     - identifier: "about"
       name: "About"
       url: "/about/"
       weight: 10
-    - identifier: "sources"
-      name: "Sources"
-      url: "/sources/"
+    - identifier: "tags"
+      name: "Tags"
+      url: "/tags/"
       weight: 20
+    - identifier: "publishers"
+      name: "Publishers"
+      url: "/publishers/"
+      weight: 30

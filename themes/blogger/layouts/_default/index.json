@@ -2,10 +2,21 @@
 [
 {{- range $index, $page := $pages -}}
   {{- if $index -}},{{- end }}
+  {{- $noteId := .File.UniqueID -}}
+  {{- with .Params.guid -}}
+    {{- $noteId = . -}}
+  {{- end -}}
   {
+    "id": {{ $noteId | jsonify }},
     "title": {{ .Title | jsonify }},
+    "headline": {{ .Params.isBasedOn.headline | jsonify }},
+    "publisher": {{ .Params.isBasedOn.publisher | jsonify }},
+    "author": {{ .Params.isBasedOn.author | jsonify }},
+    "tags": {{ .Params.tags | jsonify }},
+    "content": {{ .Plain | jsonify }},
     "url": {{ .RelPermalink | jsonify }},
-    "date": {{ .Date.Format "2006-01-02" | jsonify }}
+    "date": {{ .Date.Format "2006-01-02" | jsonify }},
+    "dateDisplay": {{ .Date.Format "January 2, 2006" | jsonify }}
   }
 {{- end -}}
 ]

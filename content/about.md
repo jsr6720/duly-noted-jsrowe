@@ -22,6 +22,26 @@ This site merges three distinct concepts into one execution:
 
 I created a `common-place-book` API that allows me to send URLs I read, plus some personal commentary to an S3 bucket as JSON. I then process those JSON files into markdown files for this site.
 
+Each entry keeps structured metadata using the [`isBasedOn` property](https://schema.org/isBasedOn), which captures the original publisher, author, headline, and URL for each note:
+
+``` yaml
+title: "'my' title'"
+author: "Commonplace Book Tools Bot"
+date: "2025-03-29T21:26:14.552296" # timestamp when I captured this
+generated: "2025-03-29T20:45:14-05:00" # timestamp when script ran
+tags:
+  - test
+  - api
+isBasedOn:
+  type: "TechArticle"
+  headline: "original `title` tag"
+  url: "original url"
+  author: "original url"
+  datePublished: "March 20, 2025" # not always a timestamp
+  publisher: "base url"
+guid: "" # guid
+```
+
 ### Inspiration
 
 I've created physical journals forever, why not a digital one? Ironically exploring this project with an LLM (Claude) taught me that I'm not alone in my desire to document the world around me.

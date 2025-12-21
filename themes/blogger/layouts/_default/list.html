@@ -9,8 +9,65 @@
 </div>
 {{ end }}
 
-{{ if gt .Paginator.TotalPages 1 }}
-<nav class="pagination pagination-top">
+{{ if .IsHome }}
+<section class="search-panel" aria-label="Browse and find">
+    <div class="search-panel__header">
+        <h2 class="search-panel__title">Browse and find</h2>
+        <p class="search-panel__subtitle">Search by publisher, tag, headline, or keyword.</p>
+    </div>
+    <div class="search-panel__controls">
+        <input id="search-input" class="search-panel__input" type="search" placeholder="Search…" data-search-input>
+        <button class="search-panel__clear" type="button" data-search-clear>Clear</button>
+    </div>
+    <div class="search-panel__meta">
+        <span class="search-panel__count" data-search-count></span>
+        <span class="search-panel__hint">Try a publisher or tag for quick recall.</span>
+    </div>
+    {{ $pages := where .Site.RegularPages "Section" "noted" }}
+    {{ $scratch := newScratch }}
+    {{ $scratch.Set "publishers" (dict) }}
+    {{ range $pages }}
+        {{ with .Params.isBasedOn.publisher }}
+            {{ $pubs := $scratch.Get "publishers" }}
+            {{ $count := index $pubs . | default 0 }}
+            {{ $pubs = merge $pubs (dict . (add $count 1)) }}
+            {{ $scratch.Set "publishers" $pubs }}
+        {{ end }}
+    {{ end }}
+    {{ $publisherList := slice }}
+    {{ range $name, $count := $scratch.Get "publishers" }}
+        {{ $publisherList = $publisherList | append (dict "name" $name "count" $count) }}
+    {{ end }}
+    {{ $publisherList = sort $publisherList "count" "desc" }}
+    <div class="search-panel__chips">
+        <div class="search-panel__chip-group">
+            <span class="search-panel__chip-label">Publishers</span>
+            <div class="search-panel__chip-row">
+                {{ range first 8 $publisherList }}
+                <a class="search-chip" href="{{ printf "/?q=%s" (urlquery .name) | relURL }}">
+                    {{ .name }} <span class="search-chip__count">{{ .count }}</span>
+                </a>
+                {{ end }}
+                <a class="search-chip search-chip--link" href="/publishers/">All publishers</a>
+            </div>
+        </div>
+        <div class="search-panel__chip-group">
+            <span class="search-panel__chip-label">Tags</span>
+            <div class="search-panel__chip-row">
+                {{ range first 12 .Site.Taxonomies.tags.ByCount }}
+                <a class="search-chip" href="{{ printf "/?q=%s" (urlquery .Name) | relURL }}">
+                    {{ .Name }} <span class="search-chip__count">{{ .Count }}</span>
+                </a>
+                {{ end }}
+                <a class="search-chip search-chip--link" href="/tags/">All tags</a>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ if and (not .IsHome) (gt .Paginator.TotalPages 1) }}
+<nav class="pagination pagination-top" data-search-pagination>
     {{ if .Paginator.HasPrev }}
     <a href="{{ .Paginator.Prev.URL }}" class="pagination-link">← Newer</a>
     {{ end }}
@@ -23,9 +80,30 @@
 </nav>
 {{ end }}
 
-<div class="posts">
-    {{ range .Paginator.Pages }}
+{{ if .IsHome }}
+{{ $pages := where .Site.RegularPages "Section" "noted" }}
+{{ $batch := 30 }}
+<div class="posts" data-batch-size="{{ $batch }}">
+    {{ range first $batch $pages }}
+    {{ $noteId := "" }}
+    {{ with .File }}{{ $noteId = .UniqueID }}{{ end }}
+    {{ with .Params.guid }}{{ $noteId = . }}{{ end }}
     {{ $colorClass := "" }}
+    {{ $searchParts := slice .Title }}
+    {{ with .Params.isBasedOn.headline }}
+        {{ $searchParts = $searchParts | append . }}
+    {{ end }}
+    {{ with .Params.isBasedOn.publisher }}
+        {{ $searchParts = $searchParts | append . }}
+    {{ end }}
+    {{ with .Params.isBasedOn.author }}
+        {{ $searchParts = $searchParts | append . }}
+    {{ end }}
+    {{ with .Params.tags }}
+        {{ $searchParts = $searchParts | append (delimit . " ") }}
+    {{ end }}
+    {{ $searchParts = $searchParts | append .Plain }}
+    {{ $searchText := lower (delimit $searchParts " ") }}
 
     {{ if .Params.tags }}
         {{ $colorKey := index .Params.tags 0 }}
@@ -34,7 +112,7 @@
         {{ end }}
     {{ end }}
 
-    <a href="{{ .RelPermalink }}" class="post-summary-link {{ $colorClass }}" tabindex="0">
+    <a href="{{ .RelPermalink }}" class="post-summary-link {{ $colorClass }}" tabindex="0" data-search-item data-note-id="{{ $noteId }}" data-search="{{ $searchText }}">
         <article class="post-summary">
             {{ if .Params.isBasedOn }}
             <h2 class="entry-headline">{{ .Params.isBasedOn.headline }}</h2>
@@ -63,9 +141,80 @@
     </a>
     {{ end }}
 </div>
+{{ else }}
+<div class="posts">
+    {{ range .Paginator.Pages }}
+    {{ $noteId := "" }}
+    {{ with .File }}{{ $noteId = .UniqueID }}{{ end }}
+    {{ with .Params.guid }}{{ $noteId = . }}{{ end }}
+    {{ $colorClass := "" }}
+    {{ $searchParts := slice .Title }}
+    {{ with .Params.isBasedOn.headline }}
+        {{ $searchParts = $searchParts | append . }}
+    {{ end }}
+    {{ with .Params.isBasedOn.publisher }}
+        {{ $searchParts = $searchParts | append . }}
+    {{ end }}
+    {{ with .Params.isBasedOn.author }}
+        {{ $searchParts = $searchParts | append . }}
+    {{ end }}
+    {{ with .Params.tags }}
+        {{ $searchParts = $searchParts | append (delimit . " ") }}
+    {{ end }}
+    {{ $searchParts = $searchParts | append .Plain }}
+    {{ $searchText := lower (delimit $searchParts " ") }}
 
-{{ if gt .Paginator.TotalPages 1 }}
-<nav class="pagination">
+    {{ if .Params.tags }}
+        {{ $colorKey := index .Params.tags 0 }}
+        {{ with index $.Site.Params.tagColors $colorKey }}
+            {{ $colorClass = printf "color-%d" . }}
+        {{ end }}
+    {{ end }}
+
+    <a href="{{ .RelPermalink }}" class="post-summary-link {{ $colorClass }}" tabindex="0" data-search-item data-note-id="{{ $noteId }}" data-search="{{ $searchText }}">
+        <article class="post-summary">
+            {{ if .Params.isBasedOn }}
+            <h2 class="entry-headline">{{ .Params.isBasedOn.headline }}</h2>
+            <div class="entry-byline">by {{ .Params.isBasedOn.author }}{{ with .Params.isBasedOn.publisher }} on {{ . }}{{ end }}</div>
+            {{ if .Params.tags }}
+            <div class="tags tags-card">
+                {{ range .Params.tags }}
+                <span class="tag-card">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            <div class="entry-note">{{ .Title }}</div>
+            <div class="entry-date">Noted {{ .Date.Format "January 2, 2006" }}</div>
+            {{ else }}
+            <h2 class="entry-headline">{{ .Title }}</h2>
+            {{ if .Params.tags }}
+            <div class="tags tags-card">
+                {{ range .Params.tags }}
+                <span class="tag-card">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ end }}
+            <div class="entry-date">Noted {{ .Date.Format "January 2, 2006" }}</div>
+            {{ end }}
+        </article>
+    </a>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ if .IsHome }}
+<div class="search-empty" data-search-empty hidden>No matches yet. Try a publisher, tag, or keyword.</div>
+<div class="search-results" data-search-results hidden></div>
+<div class="infinite-controls" data-infinite-controls>
+    <button class="infinite-button" type="button" data-load-all>Load all</button>
+    <span class="infinite-status" data-load-status></span>
+</div>
+<div class="infinite-sentinel" data-load-sentinel aria-hidden="true"></div>
+<script type="application/json" id="tag-color-map">{{ .Site.Params.tagColors | jsonify }}</script>
+{{ end }}
+
+{{ if and (not .IsHome) (gt .Paginator.TotalPages 1) }}
+<nav class="pagination" data-search-pagination>
     {{ if .Paginator.HasPrev }}
     <a href="{{ .Paginator.Prev.URL }}" class="pagination-link">← Newer</a>
     {{ end }}

@@ -9,6 +9,14 @@
 
     <div class="post-content">
         {{ .Content }}
+
+        <div class="tag-cloud-page">
+            {{ range .Site.Taxonomies.tags.ByCount }}
+            <a href="{{ "tags/" | relURL }}{{ .Name | urlize }}/" class="tag-cloud-item-page">
+                {{ .Name }} <span class="tag-count">({{ .Count }})</span>
+            </a>
+            {{ end }}
+        </div>
     </div>
 </article>
 {{ end }}
