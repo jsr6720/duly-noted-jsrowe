@@ -3,7 +3,7 @@
 
 # GitHub Pages backup <https://jsr6720.github.io/duly-noted-jsrowe/>
 url: "https://noted.jsrowe.com"
-baseURL: "/"
+baseURL: "https://noted.jsrowe.com/"
 languageCode: "en-us"
 title: "Duly Noted"
 theme: "blogger"
@@ -29,7 +29,7 @@ outputs:
     - RSS 
 
 sitemap:
-  changefreq: "weekly"
+  changefreq: "monthly"
   priority: 0.5
   filename: "sitemap.xml"
 
