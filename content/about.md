@@ -46,13 +46,15 @@ guid: "" # guid
 
 I've created physical journals forever, why not a digital one? Ironically exploring this project with an LLM (Claude) taught me that I'm not alone in my desire to document the world around me.
 
-This site especially borrows heavily from [Simon Willison's TIL](https://til.simonwillison.net) and his [*collected quotations*](https://simonwillison.net/2024/Dec/22/link-blog/) link blog posts.
+This site especially borrows heavily from [Simon Willison's TIL](https://til.simonwillison.net) and his [*collected quotations*](https://simonwillison.net/2024/Dec/22/link-blog/) [link blog posts](https://bsky.app/profile/simonwillison.net/post/3ldu6m775tk2j).
 
 > A slightly self-involved concern I have is that I like to **prove that I’ve read it**.  
 > — Simon Willison, 2024
 
 Same, Simon, Same.
 
-While building this project I found <https://notes.andymatuschak.org/About_these_notes>, and <https://notes.jim-nielsen.com> which I find to be *Chef's Kiss*. Ironically via Simon's [main blog](https://simonwillison.net/2025/Mar/10/building-websites-with-llms/). It truly is [blog posts](https://interconnected.org/home/2025/02/19/reflections) all the way down.
+While building this project I found <https://notes.andymatuschak.org/About_these_notes>, and <https://notes.jim-nielsen.com> which I find to be *Chef's Kiss*. Both found via Simon's [main blog](https://simonwillison.net/2025/Mar/10/building-websites-with-llms/). <https://thoughts.waylonwalker.com/> Is another great implementation I'm adding to this list.
+
+It truly is [blog posts](https://interconnected.org/home/2025/02/19/reflections) all the way down.
 
 [Learn more about me at jsrowe.com/about](https://jsrowe.com/about)
