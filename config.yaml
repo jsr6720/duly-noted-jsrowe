@@ -87,10 +87,15 @@ params:
     markets: 3
     investing: 3
     fintech: 3
+    taxes: 3
     # Predictions & Philosophy (lavender)
     predictions: 4
     ethics: 4
     advice: 4
+    humanity: 4
+    politics: 4
+    humor: 4
+    history: 4
     # Work & Careers (yellow)
     jobs: 0
     careers: 0
@@ -101,6 +106,7 @@ params:
     # Productivity & Learning (peach)
     productivity: 5
     education: 5
+    college: 5
 
   # Author information
   author:

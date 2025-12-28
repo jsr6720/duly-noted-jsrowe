@@ -7,16 +7,16 @@ lead: "A microblog of encountered ideas worth remembering"
 auto_generated: false
 ---
 
-This site merges three distinct concepts into one execution:
+This [site](https://github.com/jsr6720/duly-noted-jsrowe) merges three distinct concepts into one execution:
 
 1. **Microblog**  
-   First and foremost, this is a [microblog](https://en.wikipedia.org/wiki/Microblogging) - a collection of snippets I find across the interwebs.
+   First and foremost, this is a [microblog](https://en.wikipedia.org/wiki/Microblogging) - a collection of snippets I find notable from across the interwebs.
 
 2. **Personal Knowledge Management**  
    It is also my public [personal knowledge management](https://en.wikipedia.org/wiki/Personal_knowledge_management) system. It's more dynamic than republishing links on an RSS feed, and is loosely inspired by other link aggregators like [StumbleUpon](https://en.wikipedia.org/wiki/StumbleUpon), [del.icio.us](https://en.wikipedia.org/wiki/Delicious_(website)), and [Pocket](https://en.wikipedia.org/wiki/Pocket_(service)). All of which have shut down, hence this pet project.
 
 3. **Commonplace Book**  
-   Finally, it's a digital version of a [commonplace book](https://en.wikipedia.org/wiki/Commonplace_book) where I digitally "snip" articles and thoughts and include them here.
+   Finally, it's a online implementation of a [commonplace book](https://en.wikipedia.org/wiki/Commonplace_book) where I digitally "snip" articles, add my thoughts and post them here.
 
 ## How It Works
 
@@ -57,4 +57,10 @@ While building this project I found <https://notes.andymatuschak.org/About_these
 
 It truly is [blog posts](https://interconnected.org/home/2025/02/19/reflections) all the way down.
 
-[Learn more about me at jsrowe.com/about](https://jsrowe.com/about)
+Learn more about me at <https://jsrowe.com/about>.
+
+## Licensing
+
+All content on this site is released under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) - dedicated to the public domain. Use anything here however you want, no permission needed.
+
+The source code is publicly available at [github.com/jsr6720/duly-noted-jsrowe](https://github.com/jsr6720/duly-noted-jsrowe).

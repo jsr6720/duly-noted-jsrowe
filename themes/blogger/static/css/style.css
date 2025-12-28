@@ -61,6 +61,35 @@ body {
   min-width: 0; /* Prevents grid blowout */
 }
 
+/* Code blocks */
+pre {
+  background: var(--content-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 1rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 1.5rem 0;
+}
+
+code {
+  font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+  font-size: 0.9em;
+  background: var(--accent-highlight);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
 /* Header - Compact Tailwind-style top bar */
 .site-header {
   padding: 1rem 0;
@@ -147,7 +176,7 @@ body {
 
 /* Main content area */
 .container {
-  padding-top: 4rem;
+  padding-top: 1rem;
   padding-bottom: 4rem;
   min-height: 60vh;
 }
@@ -368,8 +397,11 @@ body {
 /* Filter context heading - like a filing tab */
 .list-context {
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--border-subtle);
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .filter-heading {
@@ -607,9 +639,21 @@ body {
 /* Card grid for list view - max 3 columns */
 .posts {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-bottom: 4rem;
+}
+
+@media (max-width: 1100px) {
+  .posts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .posts {
+    grid-template-columns: 1fr;
+  }
 }
 
 .post-summary-link {
@@ -824,7 +868,7 @@ body {
   border-left: none;
   padding: 0.5rem 1rem;
   margin: 1.5rem 0;
-  background: none;
+  background: rgba(255, 247, 0, 0.3);
   font-family: 'Georgia', serif;
   font-size: 1.15rem;
   line-height: 1.65;
@@ -832,8 +876,8 @@ body {
 }
 
 .post-content blockquote p, .post-excerpt blockquote p {
-  background: rgba(255, 247, 0, 0.3);
-  padding: 0.15rem 0.25rem;
+  background: none;
+  padding: 0;
   margin-bottom: 0.5rem;
 }
 
@@ -1064,10 +1108,6 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .posts {
-    grid-template-columns: 1fr;
-  }
-
   .search-results {
     grid-template-columns: 1fr;
   }

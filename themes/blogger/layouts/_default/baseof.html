@@ -19,8 +19,10 @@
     <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}">
     {{ end }}
     <script src="{{ "js/random.js" | relURL }}" defer></script>
-    {{ if .IsHome }}
+    {{ if not .IsPage }}
     <script src="{{ "js/search.js" | relURL }}" defer></script>
+    {{ end }}
+    {{ if .IsHome }}
     <script src="{{ "js/infinite-scroll.js" | relURL }}" defer></script>
     {{ end }}
 </head>
@@ -69,7 +71,7 @@
 
     <footer class="site-footer">
         <div class="footer-container">
-            <p>&copy; {{ now.Year }} <a href="https://jsrowe.com/" target="_blank" rel="noopener">{{ .Site.Params.copyright }}</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a></p>
+            <p>&copy; {{ now.Year }} <a href="https://jsrowe.com/" target="_blank" rel="noopener">{{ .Site.Params.copyright }}</a>. <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a> &bull; <a href="/privacy/">Privacy</a></p>
             <p>Built by <a href="https://wiglafsoftware.com" target="_blank" rel="noopener">Wiglaf Software™</a> using <a href="https://en.wikipedia.org/wiki/Commonplace_book" target="_blank" rel="noopener">Commonplace Book</a> principles</p>
             <p class="build-time">Last deployed {{ now.UTC.Format "2006-01-02 15:04 UTC" }}</p>
         </div>

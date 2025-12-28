@@ -26,7 +26,7 @@
                         {{ $count = add $count 1 }}
                     {{ end }}
                 {{ end }}
-                <a class="source-item" href="{{ printf "/?q=%s" (urlquery $publisher) | relURL }}">
+                <a class="source-item" href="{{ printf "/#q=%s" (urlquery $publisher) | relURL }}">
                     <span class="source-name">{{ $publisher }}</span>
                     <span class="source-count">{{ $count }} {{ if eq $count 1 }}post{{ else }}posts{{ end }}</span>
                 </a>

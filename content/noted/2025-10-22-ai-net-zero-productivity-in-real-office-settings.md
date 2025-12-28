@@ -26,6 +26,7 @@ time savings have led to improved productivity, and control group participants h
 observed productivity improvements from colleagues taking part in the M365 Copilot pilot.
 However, many pilot participants reported noticing time savings in their own roles due to
 M365 Copilot.
+> 
 > M365 Copilot was found to be particularly beneficial for neurodiverse colleagues, who
 were statistically significantly more satisfied than other users. Non-native English
 speakers also anecdotally reported significant benefits, including improvements to

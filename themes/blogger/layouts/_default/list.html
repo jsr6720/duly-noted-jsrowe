@@ -2,7 +2,14 @@
 {{ if not .IsHome }}
 <div class="list-context">
     {{ if eq .Data.Singular "tag" }}
-    <h1 class="filter-heading">Tagged: <span class="filter-value">{{ .Title }}</span>{{ with .OutputFormats.Get "RSS" }} (<a href="{{ .Permalink }}" class="rss-link" title="RSS feed for this tag">Feed <img src="{{ "images/rss.png" | relURL }}" alt="RSS" style="height: 1em; vertical-align: middle;"></a>){{ end }}</h1>
+    <h1 class="filter-heading">{{ len .Pages }} {{ if eq (len .Pages) 1 }}Post{{ else }}Posts{{ end }} Tagged: <span class="filter-value">{{ .Title }}</span>{{ with .OutputFormats.Get "RSS" }} (<a href="{{ .Permalink }}" class="rss-link" title="RSS feed for this tag">Feed <img src="{{ "images/rss.png" | relURL }}" alt="RSS" style="height: 1em; vertical-align: middle;"></a>){{ end }}</h1>
+    <div class="search-panel__controls">
+        <input id="search-input" class="search-panel__input" type="search" placeholder="Filter this tag…" data-search-input>
+        <button class="search-panel__clear" type="button" data-search-clear>Clear</button>
+    </div>
+    <div class="search-panel__meta">
+        <span class="search-panel__count" data-search-count></span>
+    </div>
     {{ else }}
     <h1 class="filter-heading">{{ .Title }}</h1>
     {{ end }}
@@ -10,10 +17,11 @@
 {{ end }}
 
 {{ if .IsHome }}
-<section class="search-panel" aria-label="Browse and find">
+{{ $pages := where .Site.RegularPages "Section" "noted" }}
+<section class="search-panel" aria-label="Search notes">
     <div class="search-panel__header">
-        <h2 class="search-panel__title">Browse and find</h2>
-        <p class="search-panel__subtitle">Search by publisher, tag, headline, or keyword.</p>
+        <h2 class="search-panel__title">Search {{ len $pages }} {{ if eq (len $pages) 1 }}note{{ else }}notes{{ end }}</h2>
+        <p class="search-panel__subtitle">Simple client-side keyword searching</p>
     </div>
     <div class="search-panel__controls">
         <input id="search-input" class="search-panel__input" type="search" placeholder="Search…" data-search-input>
@@ -21,63 +29,24 @@
     </div>
     <div class="search-panel__meta">
         <span class="search-panel__count" data-search-count></span>
-        <span class="search-panel__hint">Try a publisher or tag for quick recall.</span>
     </div>
-    {{ $pages := where .Site.RegularPages "Section" "noted" }}
-    {{ $scratch := newScratch }}
-    {{ $scratch.Set "publishers" (dict) }}
-    {{ range $pages }}
-        {{ with .Params.isBasedOn.publisher }}
-            {{ $pubs := $scratch.Get "publishers" }}
-            {{ $count := index $pubs . | default 0 }}
-            {{ $pubs = merge $pubs (dict . (add $count 1)) }}
-            {{ $scratch.Set "publishers" $pubs }}
-        {{ end }}
-    {{ end }}
-    {{ $publisherList := slice }}
-    {{ range $name, $count := $scratch.Get "publishers" }}
-        {{ $publisherList = $publisherList | append (dict "name" $name "count" $count) }}
-    {{ end }}
-    {{ $publisherList = sort $publisherList "count" "desc" }}
     <div class="search-panel__chips">
-        <div class="search-panel__chip-group">
-            <span class="search-panel__chip-label">Publishers</span>
-            <div class="search-panel__chip-row">
-                {{ range first 8 $publisherList }}
-                <a class="search-chip" href="{{ printf "/?q=%s" (urlquery .name) | relURL }}">
-                    {{ .name }} <span class="search-chip__count">{{ .count }}</span>
-                </a>
-                {{ end }}
-                <a class="search-chip search-chip--link" href="/publishers/">All publishers</a>
-            </div>
-        </div>
         <div class="search-panel__chip-group">
             <span class="search-panel__chip-label">Tags</span>
             <div class="search-panel__chip-row">
-                {{ range first 12 .Site.Taxonomies.tags.ByCount }}
-                <a class="search-chip" href="{{ printf "/?q=%s" (urlquery .Name) | relURL }}">
-                    {{ .Name }} <span class="search-chip__count">{{ .Count }}</span>
+                {{ range first 15 .Site.Taxonomies.tags.ByCount }}
+                {{ $count := .Count }}
+                {{ with $.Site.GetPage (printf "/tags/%s" .Name) }}
+                <a class="search-chip" href="{{ .RelPermalink }}">
+                    {{ .Title }} <span class="search-chip__count">{{ $count }}</span>
                 </a>
+                {{ end }}
                 {{ end }}
                 <a class="search-chip search-chip--link" href="/tags/">All tags</a>
             </div>
         </div>
     </div>
 </section>
-{{ end }}
-
-{{ if and (not .IsHome) (gt .Paginator.TotalPages 1) }}
-<nav class="pagination pagination-top" data-search-pagination>
-    {{ if .Paginator.HasPrev }}
-    <a href="{{ .Paginator.Prev.URL }}" class="pagination-link">← Newer</a>
-    {{ end }}
-
-    <span class="pagination-info">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
-
-    {{ if .Paginator.HasNext }}
-    <a href="{{ .Paginator.Next.URL }}" class="pagination-link">Older →</a>
-    {{ end }}
-</nav>
 {{ end }}
 
 {{ if .IsHome }}
@@ -143,7 +112,7 @@
 </div>
 {{ else }}
 <div class="posts">
-    {{ range .Paginator.Pages }}
+    {{ range .Pages }}
     {{ $noteId := "" }}
     {{ with .File }}{{ $noteId = .UniqueID }}{{ end }}
     {{ with .Params.guid }}{{ $noteId = . }}{{ end }}
@@ -211,19 +180,5 @@
 </div>
 <div class="infinite-sentinel" data-load-sentinel aria-hidden="true"></div>
 <script type="application/json" id="tag-color-map">{{ .Site.Params.tagColors | jsonify }}</script>
-{{ end }}
-
-{{ if and (not .IsHome) (gt .Paginator.TotalPages 1) }}
-<nav class="pagination" data-search-pagination>
-    {{ if .Paginator.HasPrev }}
-    <a href="{{ .Paginator.Prev.URL }}" class="pagination-link">← Newer</a>
-    {{ end }}
-
-    <span class="pagination-info">Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}</span>
-
-    {{ if .Paginator.HasNext }}
-    <a href="{{ .Paginator.Next.URL }}" class="pagination-link">Older →</a>
-    {{ end }}
-</nav>
 {{ end }}
 {{ end }}
