@@ -2,7 +2,7 @@
 {{ if not .IsHome }}
 <div class="list-context">
     {{ if eq .Data.Singular "tag" }}
-    <h1 class="filter-heading">Tagged: <span class="filter-value">{{ .Title }}</span></h1>
+    <h1 class="filter-heading">Tagged: <span class="filter-value">{{ .Title }}</span>{{ with .OutputFormats.Get "RSS" }} (<a href="{{ .Permalink }}" class="rss-link" title="RSS feed for this tag">Feed <img src="{{ "images/rss.png" | relURL }}" alt="RSS" style="height: 1em; vertical-align: middle;"></a>){{ end }}</h1>
     {{ else }}
     <h1 class="filter-heading">{{ .Title }}</h1>
     {{ end }}
